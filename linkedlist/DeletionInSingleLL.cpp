@@ -71,12 +71,17 @@ Node* PositionInsert(Node*& head, int k, int n) {
 Node* InsertBeforeVlaue(Node*& head, int b ,int n){
 	Node* prev = nullptr;
 	Node* temp = head;
-	if(head==nullptr){
-		cout<<"Empty list \n";
-		return NULL;
+	if(head==nullptr){ // case 1 if ll is empty
+		return head;
+	}
+	if(head->data == b){ // case if 1st element is there
+		Node* newNode = new Node(n);
+		newNode->next = head; // newNode next value is head;
+		head = newNode;
+		return head;
 	}
 	int count = 0;
-	while(temp!=nullptr){
+	while(temp!=nullptr){ // case for parsing through the ll
 		if(temp->next->data == b){
 			count++;
 			Node* x = new Node(n);
@@ -88,7 +93,7 @@ Node* InsertBeforeVlaue(Node*& head, int b ,int n){
 	}
 	if(count == 0){
 		cout<<"Value not found \n";
-		return NULL;
+		return head;
 	}
 	return head;
 }
