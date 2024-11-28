@@ -10,14 +10,73 @@ public:
 		data = data1;
 		next = next1;
 	}
-public: 
+public: // eta just for the sake jokhon lokera sudhu data diye debe then it will work and null ptr hisab e treat hobe
 	Node(int data1){
 		data = data1;
 	}
 };
-void insert(Node*& head , int n){
+void HeadInsert(Node*& head , int n){
 	Node* newNode = new Node(n, head); // newnode is pointer to the new value stored 
 	head = newNode; // head shifts to the new pointer store another value
+}
+Node* TailInsert(Node*& head , int n){
+	Node* temp = head;
+	if(head == nullptr){
+		return new Node(n);
+	}
+	while(temp->next != nullptr){
+		temp = temp->next;
+	}
+	Node* newNode = new Node(n);
+	temp->next = newNode;
+	return head;
+}
+Node* PositionInsert(Node*& head , int k ,int n){
+	if(head == nullptr){
+		if(k==1) return new Node(n);
+		else return NULL;	
+	}
+	else if(k==1){
+		Node* temp = new Node(n,head);
+		return head;;
+	}
+	int counter = 0;
+	Node* temp = head;
+	while(temp!= nullptr){
+		counter++;
+		if(k == counter+1){
+			Node* x = new Node(n);
+			x->next = temp->next; // aage x er porer number is same as temp er porer number
+			temp->next = x; // then temp er porer number is x
+			break;
+		}
+		temp = temp->next;	 
+	}
+	return head;
+}
+Node* InsertBeforeVlaue(Node*& head, int b ,int n){
+	Node* prev = nullptr;
+	Node* temp = head;
+	if(head==nullptr){
+		cout<<"Empty list \n";
+		return NULL;
+	}
+	int count = 0;
+	while(temp!=nullptr){
+		if(temp->next->data == b){
+			count++;
+			Node* x = new Node(n);
+			x->next = temp->next;
+			temp->next = x;
+			break;
+		}
+		temp = temp->next;
+	}
+	if(count == 0){
+		cout<<"Value not found \n";
+		return NULL;
+	}
+	return head;
 }
 void printLL(Node* head){
 	Node* temp = head;
@@ -100,10 +159,43 @@ int main(){
 		cin>>choice;
 		switch(choice){
 		case 1:
-			int n;
-			cout<<"Enter value : ";
-			cin>>n;
-			insert(head , n);
+			cout<<"Enter the type of insertion: 1. head 2. Tail 3. Position 4. Value \n";
+			int ch;
+			cin>>ch;	
+			switch(ch){
+			case 1:
+				int n;
+				cout<<"Enter value : ";
+				cin>>n;	
+				HeadInsert(head , n);
+			break;
+			case 2:
+				int m;
+				cout<<"Enter value : ";
+				cin>>m;
+				head = TailInsert(head , m);
+			break;
+			case 3:
+				int o;
+				int k;
+				cout<<"Enter Position of inertion : ";
+				cin>>k;
+				cout<<"Enter Value : ";
+				cin>>o;
+				head = PositionInsert(head,k,o);
+			break;
+			case 4:
+				int p;
+				int b;
+				cout<<"Enter value before of inertion : ";
+				cin>>b;
+				cout<<"Enter Value for insertion : ";
+				cin>>p;
+				head = InsertBeforeVlaue( head,  b , p);
+			break;
+			default:
+				cout<<"Wrong input \n";
+			}	
 			break;
 		case 2:
 			printLL(head);
