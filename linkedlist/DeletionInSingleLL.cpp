@@ -1,5 +1,4 @@
 #include<iostream>
-#include<vector>
 using namespace std;
 class Node{ 
 public:
@@ -76,7 +75,7 @@ Node* InsertBeforeVlaue(Node*& head, int b ,int n){
 	}
 	if(head->data == b){ // case if 1st element is there
 		Node* newNode = new Node(n);
-		newNode->next = head; // newNode next value is head;
+		newNode->next = head; // newNode next value is head
 		head = newNode;
 		return head;
 	}
