@@ -129,6 +129,64 @@ Node* deleteAtTail(Node* head) {
     delete temp;
     return head;
 }
+Node* deleteAtPosition(Node* head , int pos){
+    // pehele head check
+    if(pos == 1){
+        Node* temp = head;
+        head = head->next;
+        if(head!=nullptr){
+            head->prev = nullptr;
+        }
+        delete temp;
+        return head;
+    }
+    // desired position pe traverse
+    Node* temp = head;
+    int count = 1;
+    while(temp!=nullptr && count<pos){
+        temp = temp->next;
+        count++;
+    }
+    // check if temp is nullptr or not
+    if(temp == nullptr){
+        return head;
+    }
+    // ab agar koi edge case nahi hain then simply delete
+    if (temp->prev != nullptr) {
+        temp->prev->next = temp->next;
+    }
+    if (temp->next != nullptr) {
+        temp->next->prev = temp->prev;
+    }
+    delete temp;
+    return head;
+}
+Node* deleteValue(Node* head , int val){
+    if(head->data == val){
+        Node* temp = head;
+        head = head->next;
+        if(head!=nullptr){
+            head->prev = nullptr;
+        }
+        delete temp;
+        return head;
+    }
+    Node* temp = head;
+    while(temp!=nullptr && temp->data != val){
+        temp = temp->next;
+    }
+    if(temp == nullptr){
+        return head;
+    }
+    if (temp->prev != nullptr) {
+        temp->prev->next = temp->next;
+    }
+    if (temp->next != nullptr) {
+        temp->next->prev = temp->prev;
+    }
+    delete temp;
+    return head;
+}
 void printLL(Node* head) {
     Node* curr = head;
     while (curr != nullptr) {
@@ -162,6 +220,7 @@ int main() {
                 cout << "Enter the value to insert: ";
                 cin >> data;
                 head = inputAtHead(head, data);
+                printLL(head);
                 break;
             }
             case 2: {
@@ -169,6 +228,7 @@ int main() {
                 cout << "Enter the value to insert at tail: ";
                 cin >> data1;
                 head = inputAtTail(head, data1);
+                printLL(head);
                 break;
             }
         	case 3:{
@@ -178,6 +238,7 @@ int main() {
         		cout<<"Enter the position : ";
         		cin>>pos;
         		head = inputAtPosition(head, pos , data2);
+                printLL(head);
         		break; 
         	}
            	case 4:{
@@ -187,6 +248,7 @@ int main() {
         		cout<<"Enter the value before which the new value is to be inserted : ";
         		cin>>val;
         		head = inputBeforeValue(head, val , data3);
+                printLL(head);
         		break; 
         	}
             default:
@@ -195,8 +257,35 @@ int main() {
             break;
         }
         case 2:
-            head = deleteAtHead(head);
-            break;
+            int ch;
+            cout << "1. At head 2. At tail 3. At Position 4.by value \n";
+            cin >> ch;
+            switch (ch) {
+            case 1: {
+                head = deleteAtHead(head);
+                break;
+            }
+            case 2: {
+                head = deleteAtTail(head);
+                break;
+            }
+            case 3:{
+                int pos;
+                cout<<"Enter the position : ";
+                cin>>pos;
+                head = deleteAtPosition(head ,pos);
+                break;
+            }
+        case 4:{
+                int pos;
+                cout<<"Enter the value : ";
+                cin>>pos;
+                head = deleteValue(head ,pos);
+                break;
+            }
+            default:
+                break;
+            }
         case 3:
             printLL(head);
             break;
