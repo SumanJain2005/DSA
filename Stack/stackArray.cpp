@@ -11,10 +11,7 @@ public:
 		stackArray = new int[capacity];
 		topIndex = -1;
 	}
-	//destructor, optional hai
-	~ArrayStack(){
-		delete[] stackArray;
-	}
+	
 	void push(int x){
 		if(topIndex >= capacity-1){
 			cout<<"Stack Overflow \n";
