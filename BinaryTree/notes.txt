@@ -1,0 +1,11 @@
+5 types of binary trees : 
+Full binary tree : Node has either 0 or 2 children, not 1.
+Complete binary tree : All levels should be filled and except the last level. Or the last level guys is as left as possible.
+Perfect binary tree : All the leaf nodes should be at the same level.
+Balanced binary tree : Height of the tree is maximum log(n), where n is the number of nodes.
+Degenerate Tree : Every node has a single children this is basically linked list.
+
+We represent binary tree similar to the linked list, but here we treat it like data and 1 pointers named left and right, the left and right are by default nullptrs but are pointed to the new nodes's data when converted to a tree.
+
+3 types of traversals for DFS (depth first search) :
+InOrder (left root right) PreOrder (root left right) PostOrder (left right root)
