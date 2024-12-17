@@ -12,7 +12,7 @@ This repository contains implementations of various data structures and algorith
 * **Linked Lists**
   * Singly linked lists
   * Doubly linked lists
-  * Circular linked lists
+  * Some Problems
 * **Stacks**
 * **Queues**
 * **Trees**
@@ -38,16 +38,9 @@ This repository contains implementations of various data structures and algorith
   * Linear Search
   * Binary Search
 * **Dynamic Programming**
-  * Fibonacci
-  * Knapsack Problem
-  * Longest Common Subsequence (LCS)
 * **Greedy Algorithms**
-  * Activity Selection Problem
-  * Fractional Knapsack Problem
 * **Backtracking**
-  * N-Queens Problem
-  * Sudoku Solver
-
+  
 ## Contributing
 
 Feel free to contribute to this repository by:
@@ -63,9 +56,5 @@ To contribute, please follow these steps:
 4. Commit your changes
 5. Push your changes to your forked repository
 6. Create a pull request
-
-## License
-
-This repository is licensed under the [MIT License](LICENSE).
 
 **Let's learn and grow together!**
