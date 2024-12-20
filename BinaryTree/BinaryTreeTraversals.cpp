@@ -45,7 +45,6 @@ Node* buildTree() {
             q.push(current->right);
         }
     }
-
     return root;
 }
 
@@ -98,6 +97,22 @@ void printLevelOrderTraversal(Node* root){
     }
     cout<<"\n";
 }
+
+void IterativePreOrder(Node* root){
+    if(root == NULL){
+        return;
+    }
+    stack<Node*> st;
+    st.push(root);
+    while(!st.empty()){
+        Node* current = st.top();
+        st.pop();
+        cout<<current->data<<" ";
+        // Push right child first, so left child is processed first
+        if(current->right) st.push(current->right);
+        if(current->left) st.push(current->left);
+    }
+} // similarly baaki iterative gulo kaaj korbe 
 int main() {
     Node* root = buildTree(); // Build the tree dynamically
     cout << "PreOrder Traversal of the tree: ";
